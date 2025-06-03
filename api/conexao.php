@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';       // ou IP do servidor
-$dbname = 'baracity';      // nome do banco de dados
-$user = 'root';            // usuário do MySQL
-$pass = '';                // senha (coloque se tiver)
+$host = 'localhost';
+$dbname = 'baracity';
+$user = 'root';    
+$pass = '';     
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);

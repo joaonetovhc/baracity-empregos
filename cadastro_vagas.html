@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Vagas - Empresa</title>
+  <link rel="stylesheet" href="assets/css/cadastro_vagas.css">
+</head>
+<body>
+  <div class="topbar">
+    Painel da Empresa
+    <button class="logout">Sair</button>
+  </div>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <div class="user-info">
+        <strong>Empresa XPTO</strong>
+        <span>Gestor</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Cadastrar Vaga</a></li>
+          <li><a href="#">Minhas Vagas</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="content">
+      <h1>Cadastrar Nova Vaga</h1>
+      <form class="form-vaga">
+        <label for="titulo">Título da Vaga</label>
+        <input type="text" id="titulo" placeholder="Ex: Auxiliar Administrativo" required />
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" rows="4" placeholder="Descreva as responsabilidades da vaga..." required></textarea>
+
+        <label for="requisitos">Requisitos</label>
+        <textarea id="requisitos" rows="3" placeholder="Liste os requisitos mínimos..." required></textarea>
+
+        <label for="local">Local de Trabalho</label>
+        <input type="text" id="local" placeholder="Cidade/Bairro" required />
+
+        <label for="salario">Faixa Salarial</label>
+        <input type="text" id="salario" placeholder="Ex: R$ 1.500 - R$ 2.000" />
+
+        <button type="submit">Cadastrar Vaga</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

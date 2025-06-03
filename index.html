@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Baracity Empregos</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    Baracity Empregos
+  </div>
+
+  <div class="container">
+    <div class="login-box">
+      <h2>Bem vindo ao Baracity Empregos</h2>
+
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="exemplo@baracity.rn.gov" required />
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo Usuário</label>
+          <select id="tipo" name="tipo" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="candidato">Candidato</option>
+            <option value="empresa">Empresa</option>
+            <option value="prefeitura">Prefeitura</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-login">ENTRAR</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <?php
 require_once 'conexao.php';
 
-$data = json_decode(file_get_contents("php://input"), true); 
+$data = json_decode(file_get_contents("php://input"), true);
 
 
 if (!isset($data['nome'], $data['email'], $data['senha'])) {

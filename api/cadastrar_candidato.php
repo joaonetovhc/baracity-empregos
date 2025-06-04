@@ -4,7 +4,7 @@ require_once 'conexao.php';
 $data = json_decode(file_get_contents("php://input"), true);
 
 
-if (!isset($data['nome'], $data['email'], $data['senha'])) {
+if (!isset($data['nome'], $data['email'], $data['senha'], $data['telefone'], $data['cidade'])) {
     http_response_code(400);
     echo json_encode(['erro' => 'Preencha todos os campos obrigatorios.']);
     exit;

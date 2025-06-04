@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'baracity';
 $user = 'root';
-$pass = '123456';
+$pass = '';
 
 
 try {

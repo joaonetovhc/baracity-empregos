@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f2f3f4; /* Igual ao login */
+}
+
+.topbar {
+  background-color: #0d6efd;
+  color: white;
+  padding: 15px 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cadastro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; /* Igual ao login */
+}
+
+.cadastro-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px; /* Igual ao login-box */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Igual ao login */
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.cadastro-card h1 {
+  margin-bottom: 25px;
+  font-size: 18px; /* Igual ao login h2 */
+  font-weight: 600;
+}
+
+form .form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+form button:hover {
+  background-color: #0954cb;
+}
+
+.link {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.link a {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: bold;
+}

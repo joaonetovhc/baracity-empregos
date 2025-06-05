@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Candidato - Baracity Empregos</title>
+  <link rel="stylesheet" href="assets/css/cadastrar.css">
+</head>
+<body>
+  <div class="topbar">
+    Baracity Empregos
+  </div>
+
+  <main class="cadastro-container">
+    <div class="cadastro-card">
+      <h1>Cadastre-se no Baracity Empregos</h1>
+
+      <form action="api/cadastrar.php" method="POST">
+
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="digite seu nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="exemplo@baracity.rn.gov" required>
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo Usuário</label>
+          <select id="tipo" name="tipo" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="candidato">Candidato</option>
+            <option value="empresa">Empresa</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+        <p class="link">Já tem conta? <a href="login.html">Entrar</a></p>
+
+      </form>
+    </div>
+  </main>
+</body>
+</html>

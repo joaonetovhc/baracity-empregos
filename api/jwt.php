@@ -15,3 +15,23 @@ function gerarJWT(array $payload): string {
 function base64UrlEncode(string $str): string {
     return rtrim(strtr(base64_encode($str), '+/', '-_'), '=');
 }
+
+
+function verificarJWT(string $token) {
+    $chave = 'b4r4c1tyX4ve3sç3kr3t4';
+
+    $partes = explode('.', $token);
+    if (count($partes) !== 3) return false;
+
+    [$base64Header, $base64Payload, $base64Assinatura] = $partes;
+
+    $assinaturaVerificada = base64UrlEncode(
+        hash_hmac('sha256', "$base64Header.$base64Payload", $chave, true)
+    );
+
+    if (!hash_equals($base64Assinatura, $assinaturaVerificada)) return false;
+
+    $payload = json_decode(base64_decode($base64Payload), true);
+
+    return $payload;
+}

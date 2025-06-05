@@ -25,10 +25,18 @@ body {
   font-weight: bold;
 }
 
-.container {
-  max-width: 900px;
+.title {
   margin: 30px auto;
   padding: 0 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 40px;
 }
 
 h2 {
@@ -38,9 +46,16 @@ h2 {
 .vaga-card {
   background-color: #d6d0d0;
   padding: 20px;
-  margin-bottom: 20px;
+  width: 300px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vaga-content {
+  flex-grow: 1;
 }
 
 .vaga-card h3 {
@@ -52,7 +67,7 @@ h2 {
 }
 
 .vaga-card button {
-  margin-top: 10px;
+  margin-top: 15px;
   background-color: #0d6efd;
   color: white;
   border: none;
@@ -60,4 +75,14 @@ h2 {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  align-self: flex-start;
+}
+
+.descricao {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical;
+  max-height: 5.6em; 
 }

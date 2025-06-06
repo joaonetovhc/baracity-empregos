@@ -62,3 +62,32 @@ function logout() {
   localStorage.clear();
   window.location.href = 'login.html';
 }
+
+function candidatar(id_vaga) {
+  const token = localStorage.getItem('token');
+  
+  const curriculo = 'asdaas';
+
+  fetch(`http://localhost/A3/baracity-empregos/api/candidatar.php?token=${token}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id_vaga: id_vaga,
+      curriculo: curriculo
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.sucesso) {
+      alert(data.sucesso);
+    } else if (data.erro) {
+      alert('Erro: ' + data.erro);
+    }
+  })
+  .catch(error => {
+    console.error('Erro ao enviar candidatura:', error);
+    alert('Erro ao se candidatar. Tente novamente mais tarde.');
+  });
+}

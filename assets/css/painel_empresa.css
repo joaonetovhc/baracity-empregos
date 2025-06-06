@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f2f3f4;
 }
 
@@ -23,6 +27,11 @@ body {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #e6e6e6;
 }
 
 .main-container {
@@ -54,6 +63,7 @@ body {
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
@@ -64,50 +74,64 @@ body {
   text-decoration: none;
   color: #0d6efd;
   font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a:focus {
+  color: #084298;
+  outline: none;
 }
 
 .content {
   flex: 1;
   padding: 30px;
   overflow-y: auto;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 .content h1 {
   margin-top: 0;
 }
 
-.card {
-  background-color:  #d6d0d0;
+.vaga-card {
+  background-color: #e9ecef; /* tom mais suave que antes */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
 }
 
-.card h2 {
+.vaga-card h3 {
   margin-top: 0;
 }
 
-.card button {
+.vaga-card p {
+  margin: 6px 0;
+}
+
+.vaga-card button {
   margin-top: 10px;
   margin-right: 10px;
-  background-color: #0d6efd;
-  color: white;
-  border: none;
-  padding: 10px;
+  padding: 10px 14px;
   font-weight: bold;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
-.card .edit {
-  background-color: #ffc107;
-}
-
-.card .delete {
-  background-color: #dc3545;
-}
-
-.card button:hover {
+.vaga-card button:hover {
   opacity: 0.9;
+}
+
+.vaga-card button.edit {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.vaga-card button.delete {
+  background-color: #dc3545;
+  color: white;
 }

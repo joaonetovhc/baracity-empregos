@@ -9,7 +9,7 @@
 <body>
   <div class="topbar">
     Baracity Empregos
-    <button class="logout">Sair</button>
+    <nav id="user-nav"></nav>
   </div>
 
   <div class="main-container">
@@ -20,35 +20,17 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#">Cadastrar vaga</a></li>
-          <li><a href="#">Minhas vagas</a></li>
-          <li><a href="#">Candidatos</a></li>
+          <li><a href="cadastro_vagas.html">Cadastrar vaga</a></li>
+          <li><a href="painel_empresa.html">Minhas vagas</a></li>
+          <li><a href="ver_candidatos.html">Candidatos</a></li>
         </ul>
       </nav>
     </aside>
-
     <section class="content">
-      <h1>Painel da Empresa</h1>
-      <p>Acompanhe suas vagas e os candidatos interessados.</p>
-
-      <div class="card">
-        <h2>Vaga: Técnico em TI</h2>
-        <p><strong>Status:</strong> Ativa</p>
-        <p><strong>Candidatos:</strong> 5</p>
-        <button>Ver Candidatos</button>
-        <button class="edit">Editar</button>
-        <button class="delete">Excluir</button>
-      </div>
-
-      <div class="card">
-        <h2>Vaga: Analista de Suporte</h2>
-        <p><strong>Status:</strong> Inativa</p>
-        <p><strong>Candidatos:</strong> 2</p>
-        <button>Ver Candidatos</button>
-        <button class="edit">Editar</button>
-        <button class="delete">Excluir</button>
-      </div>
+      <h1>Minhas Vagas</h1>
+      <div id="vagas-container"> </div>
     </section>
   </div>
+   <script src="assets/js/painel_empresa.js"></script>
 </body>
 </html>

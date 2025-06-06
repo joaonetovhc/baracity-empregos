@@ -3,6 +3,8 @@ require_once 'conexao.php';
 require_once 'jwt.php';
 
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 // Pega token pela URL
 $token = $_GET['token'] ?? null;

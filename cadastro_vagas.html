@@ -28,21 +28,32 @@
 
     <section class="content">
       <h1>Cadastrar Nova Vaga</h1>
-      <form class="form-vaga">
-        <label for="titulo">Título da Vaga</label>
-        <input type="text" id="titulo" placeholder="Ex: Auxiliar Administrativo" required />
+      <form class="form-vaga" action="api/cadastrar_vaga.php" method="POST">
+        
+        <div class="form-group">
+          <label for="titulo">Título da Vaga</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Ex: Auxiliar Administrativo" required />
+        </div>
 
-        <label for="descricao">Descrição</label>
-        <textarea id="descricao" rows="4" placeholder="Descreva as responsabilidades da vaga..." required></textarea>
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva as responsabilidades da vaga..." required></textarea>
+        </div>
 
-        <label for="requisitos">Requisitos</label>
-        <textarea id="requisitos" rows="3" placeholder="Liste os requisitos mínimos..." required></textarea>
+        <div class="form-group">
+          <label for="requisitos">Requisitos</label>
+          <textarea id="requisitos" name="requisitos" rows="3" placeholder="Liste os requisitos mínimos..." required></textarea>
+        </div>
 
-        <label for="local">Local de Trabalho</label>
-        <input type="text" id="local" placeholder="Cidade/Bairro" required />
+        <div class="form-group">
+          <label for="local">Local de Trabalho</label>
+          <input type="text" id="local" name="local" placeholder="Cidade/Bairro" required />
+        </div>
 
-        <label for="salario">Faixa Salarial</label>
-        <input type="text" id="salario" placeholder="Ex: R$ 1.500 - R$ 2.000" />
+        <div class="form-group">
+          <label for="salario">Faixa Salarial</label>
+          <input type="text" id="salario" name="salario" placeholder="Ex: R$ 1.500 - R$ 2.000" />
+        </div>
 
         <button type="submit">Cadastrar Vaga</button>
       </form>

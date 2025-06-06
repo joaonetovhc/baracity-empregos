@@ -3,6 +3,8 @@ require_once 'conexao.php';
 require_once 'jwt.php';
 
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 // Recupera o token da URL (GET)
 $token = $_GET['token'] ?? '';

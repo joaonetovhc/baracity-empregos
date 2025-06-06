@@ -1,8 +1,33 @@
 <?php
 require_once 'conexao.php';
+require_once 'jwt.php';
+
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
+
+
+$token = $_GET['token'] ?? '';
+
+if (!$token) {
+    http_response_code(401);
+    echo json_encode(['erro' => 'Token não fornecido']);
+    exit;
+}
+
+$payload = verificarJWT($token);
+
+if (!$payload) {
+    http_response_code(401);
+    echo json_encode(['erro' => 'Token inválido']);
+    exit;
+}
+
+if (!in_array($payload['tipo'], ['candidato', 'admin'])) {
+    http_response_code(403);
+    echo json_encode(['erro' => 'Acesso não autorizado']);
+    exit;
+}
 
 try {
     $stmt = $pdo -> query("

@@ -1,10 +1,15 @@
 <?php
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Headers: *");
 
 require_once 'conexao.php';
 require_once 'jwt.php';   
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
 
 // Recebe os dados da requisição
 $data = json_decode(file_get_contents("php://input"), true);
@@ -21,7 +26,6 @@ if (empty($email) || empty($senha) || empty($tipo)) {
 }
 
 try {
-    // Consulta segura com prepared statement
     $stmt = $pdo -> prepare("SELECT * FROM usuarios WHERE email = :email AND tipo = :tipo LIMIT 1");
     $stmt -> execute([':email' => $email, ':tipo' => $tipo]);
     $usuario = $stmt -> fetch(PDO::FETCH_ASSOC);
@@ -48,7 +52,7 @@ try {
         ]);
     } else {
         http_response_code(401);
-        echo json_encode(['erro' => 'Email ou senha inválidos.']);
+        echo json_encode(['erro' => 'Dados invalidos, tente novamente.']);
     }
 
 } catch (PDOException $e) {

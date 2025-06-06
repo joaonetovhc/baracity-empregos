@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   const token = localStorage.getItem('token');
-  const nome = localStorage.getItem('nome');
   const nav = document.getElementById('user-nav');
 
   // Verifica se está logado
@@ -10,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-if (nome && nome.trim()) {
+  // Exibe o nome no menu, se existir
+  const nome = localStorage.getItem('nome');
+  if (nome && nome.trim()) {
     nav.innerHTML = `
       <span>Olá, ${nome}</span>
       <a href="#" onclick="logout()" style="margin-left: 20px;">Sair</a>
@@ -22,13 +23,13 @@ if (nome && nome.trim()) {
     `;
   }
 
-  fetch(`http://localhost/baracity-empregos/api/listar_vagas.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/vagas_empresa.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
 
       if (!data.vagas || data.vagas.length === 0) {
-        container.innerHTML = '<p>Nenhuma vaga disponível no momento.</p>';
+        container.innerHTML = '<p>Nenhuma vaga cadastrada.</p>';
         return;
       }
 
@@ -39,19 +40,20 @@ if (nome && nome.trim()) {
         card.innerHTML = `
           <div class="vaga-content">
             <h3>${vaga.titulo}</h3>
-            <p><strong>Empresa:</strong> ${vaga.nome_empresa}</p>
-            <p class="descricao"><strong>Descrição:</strong> ${vaga.descricao}</p>
+            <p><strong>Descrição:</strong> ${vaga.descricao}</p>
             <p><strong>Requisitos:</strong> ${vaga.requisitos || 'Não informado'}</p>
             <p><strong>Salário:</strong> R$ ${parseFloat(vaga.salario).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+            <p><strong>Data da publicação:</strong> ${vaga.data_publicacao}</p>
           </div>
-          <button onclick="candidatar(${vaga.id})">Candidatar-se</button>
+          <button onclick="editarVaga(${vaga.id})">Editar</button>
+          <button onclick="excluirVaga(${vaga.id})">Excluir</button>
         `;
 
         container.appendChild(card);
       });
     })
     .catch(error => {
-      console.error('Erro ao carregar vagas:', error);
+      console.error('Erro ao carregar vagas da empresa:', error);
       document.getElementById('vagas-container').innerHTML = '<p>Erro ao carregar as vagas.</p>';
     });
 });
@@ -59,4 +61,30 @@ if (nome && nome.trim()) {
 function logout() {
   localStorage.clear();
   window.location.href = 'login.html';
+}
+
+function editarVaga(id) {
+  window.location.href = `editar_vaga.html?id=${id}`;
+}
+
+function excluirVaga(id) {
+  if (confirm('Tem certeza que deseja excluir esta vaga?')) {
+    const token = localStorage.getItem('token');
+    fetch(`http://localhost/baracity-empregos/api/excluir_vaga.php?id=${id}&token=${token}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.sucesso) {
+        alert('Vaga excluída com sucesso.');
+        window.location.reload();
+      } else {
+        alert(data.erro || 'Erro ao excluir vaga.');
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao excluir vaga:', error);
+      alert('Erro ao excluir vaga.');
+    });
+  }
 }

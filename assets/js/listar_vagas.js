@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const nome = localStorage.getItem('nome');
   const nav = document.getElementById('user-nav');
 
+
   // Verifica se está logado
   if (!token) {
     alert('Você precisa estar logado.');
@@ -22,7 +23,7 @@ if (nome && nome.trim()) {
     `;
   }
 
-  fetch(`http://localhost/baracity-empregos/api/listar_vagas.php?token=${token}`)
+  fetch(`http://localhost/A3/baracity-empregos/api/listar_vagas.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
@@ -43,6 +44,7 @@ if (nome && nome.trim()) {
             <p class="descricao"><strong>Descrição:</strong> ${vaga.descricao}</p>
             <p><strong>Requisitos:</strong> ${vaga.requisitos || 'Não informado'}</p>
             <p><strong>Salário:</strong> R$ ${parseFloat(vaga.salario).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+            <p><strong>Data da publicação:</strong> ${new Date (vaga.data_publicacao).toLocaleDateString('pt-br')}</p>
           </div>
           <button onclick="candidatar(${vaga.id})">Candidatar-se</button>
         `;

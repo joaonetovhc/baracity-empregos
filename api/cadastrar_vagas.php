@@ -2,6 +2,14 @@
 require_once 'conexao.php';
 require_once 'jwt.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+    http_response_code(204); // Sem conteúdo
+    exit;
+}
+
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");

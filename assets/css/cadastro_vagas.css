@@ -20,15 +20,24 @@ body {
   align-items: center;
 }
 
-.logout {
-  background-color: #fff;
-  color: #0d6efd;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-weight: bold;
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.user-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
   cursor: pointer;
 }
+
+.user-nav :hover{
+  color: rgb(167, 149, 149);
+}
+
 
 .main-container {
   display: flex;
@@ -40,20 +49,6 @@ body {
   background-color: #fff;
   padding: 20px;
   border-right: 1px solid #ccc;
-}
-
-.user-info {
-  margin-bottom: 30px;
-}
-
-.user-info strong {
-  display: block;
-  font-size: 16px;
-}
-
-.user-info span {
-  color: gray;
-  font-size: 14px;
 }
 
 .sidebar ul {
@@ -103,6 +98,7 @@ body {
   border-radius: 5px;
   margin-top: 5px;
   font-size: 14px;
+  resize: none;
 }
 
 .form-vaga button {

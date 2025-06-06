@@ -19,19 +19,21 @@ body {
   align-items: center;
 }
 
-.logout {
-  background-color: #fff;
-  color: #0d6efd;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
 }
 
-.logout:hover {
-  background-color: #e6e6e6;
+.user-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.user-nav :hover{
+  color: rgb(167, 149, 149);
 }
 
 .main-container {

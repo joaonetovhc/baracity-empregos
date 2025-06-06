@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipo = document.getElementById('tipo').value;
 
     try {
-      const resposta = await fetch('http://localhost/baracity-empregos/api/login.php', {
+      const resposta = await fetch('http://localhost/A3/baracity-empregos/api/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

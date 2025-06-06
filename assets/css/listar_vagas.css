@@ -98,7 +98,108 @@ h2 {
 .descricao {
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box; 
+  display: -webkit-box;
   -webkit-box-orient: vertical;
-  max-height: 5.6em; 
+  max-height: 5.6em;
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.file-input-wrapper {
+  margin-bottom: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-input-wrapper input[type="file"] {
+  display: none; 
+}
+
+.custom-file-upload {
+  display: inline-block;
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: 2px solid #0d6efd;
+}
+
+.custom-file-upload:hover {
+  background-color: #0a58ca;
+}
+
+.selected-file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+
+.enviar {
+  margin-top: 20px;
+  background-color:#0d6efd; 
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.enviar:hover {
+  background-color: #5093f7;
+}
+
+.close {
+  position: absolute;
+  right: 15px; 
+  top: 10px;
+  font-size: 30px; 
+  cursor: pointer;
+  color: #aaa; 
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: #333;
 }

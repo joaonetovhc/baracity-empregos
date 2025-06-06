@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const nome = localStorage.getItem('nome');
   const nav = document.getElementById('user-nav');
 
-
   // Verifica se está logado
   if (!token) {
     alert('Você precisa estar logado.');
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-if (nome && nome.trim()) {
+  if (nome && nome.trim()) {
     nav.innerHTML = `
       <span>Olá, ${nome}</span>
       <a href="#" onclick="logout()" style="margin-left: 20px;">Sair</a>
@@ -44,7 +43,7 @@ if (nome && nome.trim()) {
             <p class="descricao"><strong>Descrição:</strong> ${vaga.descricao}</p>
             <p><strong>Requisitos:</strong> ${vaga.requisitos || 'Não informado'}</p>
             <p><strong>Salário:</strong> R$ ${parseFloat(vaga.salario).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
-            <p><strong>Data da publicação:</strong> ${new Date (vaga.data_publicacao).toLocaleDateString('pt-br')}</p>
+            <p><strong>Data da publicação:</strong> ${new Date(vaga.data_publicacao).toLocaleDateString('pt-br')}</p>
           </div>
           <button onclick="candidatar(${vaga.id})">Candidatar-se</button>
         `;
@@ -63,31 +62,67 @@ function logout() {
   window.location.href = 'login.html';
 }
 
-function candidatar(id_vaga) {
+function candidatar(idVaga) {
   const token = localStorage.getItem('token');
-  
-  const curriculo = 'asdaas';
+
+  fetch(`http://localhost/A3/baracity-empregos/api/verifica_candidatura.php?token=${token}&id_vaga=${idVaga}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ja_candidatou) {
+        alert('Você já se candidatou a essa vaga.');
+      } else {
+        document.getElementById('vaga-id').value = idVaga;
+        document.getElementById('modal-candidatura').style.display = 'flex';
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao verificar candidatura:', error);
+      alert('Erro ao verificar candidatura. Tente novamente mais tarde.');
+    });
+}
+
+function fecharModal() {
+  document.getElementById('modal-candidatura').style.display = 'none';
+  document.getElementById('vaga-id').value = '';
+  document.getElementById('curriculo').value = '';
+}
+
+document.getElementById('form-candidatura').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const token = localStorage.getItem('token');
+  const vagaId = document.getElementById('vaga-id').value;
+  const arquivoInput = document.getElementById('curriculo');
+
+  if (arquivoInput.files.length === 0) {
+    alert('Por favor, selecione um arquivo de currículo.');
+    return;
+  }
+
+  const arquivo = arquivoInput.files[0];
+  const formData = new FormData();
+
+  formData.append('id_vaga', vagaId);
+  formData.append('curriculo', arquivo);
 
   fetch(`http://localhost/A3/baracity-empregos/api/candidatar.php?token=${token}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id_vaga: id_vaga,
-      curriculo: curriculo
-    })
+    body: formData
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error('HTTP status ' + response.status);
+    return response.json();
+  })
   .then(data => {
     if (data.sucesso) {
       alert(data.sucesso);
-    } else if (data.erro) {
-      alert('Erro: ' + data.erro);
+      fecharModal();
+    } else {
+      alert('Erro: ' + (data.erro || 'Erro desconhecido'));
     }
   })
   .catch(error => {
     console.error('Erro ao enviar candidatura:', error);
     alert('Erro ao se candidatar. Tente novamente mais tarde.');
   });
-}
+});

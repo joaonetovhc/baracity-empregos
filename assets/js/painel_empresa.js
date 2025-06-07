@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   }
 
-  fetch(`http://localhost/A3/baracity-empregos/api/vagas_empresa.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/vagas_empresa.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Salário:</strong> R$ ${parseFloat(vaga.salario).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
             <p><strong>Data da publicação:</strong> ${new Date (vaga.data_publicacao).toLocaleDateString('pt-br')}</p>
           </div>
-          <button onclick="editarVaga(${vaga.id})">Editar</button>
-          <button onclick="excluirVaga(${vaga.id})">Excluir</button>
+          <button class="btn-editar" onclick="editarVaga(${vaga.id})">Editar</button>
+          <button class="btn-excluir" onclick="excluirVaga(${vaga.id})">Excluir</button>
         `;
 
         container.appendChild(card);

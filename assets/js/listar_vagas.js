@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   }
 
-  fetch(`http://localhost/A3/baracity-empregos/api/listar_vagas.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/listar_vagas.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
@@ -65,7 +65,7 @@ function logout() {
 function candidatar(idVaga) {
   const token = localStorage.getItem('token');
 
-  fetch(`http://localhost/A3/baracity-empregos/api/verifica_candidatura.php?token=${token}&id_vaga=${idVaga}`)
+  fetch(`http://localhost/baracity-empregos/api/verifica_candidatura.php?token=${token}&id_vaga=${idVaga}`)
     .then(response => response.json())
     .then(data => {
       if (data.ja_candidatou) {
@@ -105,7 +105,7 @@ document.getElementById('form-candidatura').addEventListener('submit', function(
   formData.append('id_vaga', vagaId);
   formData.append('curriculo', arquivo);
 
-  fetch(`http://localhost/A3/baracity-empregos/api/candidatar.php?token=${token}`, {
+  fetch(`http://localhost/baracity-empregos/api/candidatar.php?token=${token}`, {
     method: 'POST',
     body: formData
   })

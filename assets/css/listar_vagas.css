@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -47,6 +51,7 @@ body {
   padding: 0 20px;
 }
 
+/*vagas */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -103,6 +108,7 @@ h2 {
   max-height: 5.6em;
 }
 
+/*modal candidatura*/
 .modal {
   position: fixed;
   z-index: 999;

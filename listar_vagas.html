@@ -8,7 +8,7 @@
 <body>
   <header class="topbar">
     <h1>Baracity Empregos</h1>
-    <nav id="user-nav"></nav>
+    <nav id="user-nav" class="user-nav"></nav>
   </header>
 
   <div class="title">
@@ -18,6 +18,17 @@
   <main class="container" id="vagas-container">
    
   </main>
+  <div id="modal-candidatura" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <h2>Anexar Currículo</h2>
+    <form id="form-candidatura">
+      <input type="hidden" id="vaga-id">
+      <input type="file" id="curriculo" accept=".pdf,.doc,.docx" required>
+      <button type="submit" class="enviar">Enviar Candidatura</button>
+    </form>
+  </div>
+</div>
   <script src="assets/js/listar_vagas.js"></script>
 </body>
 </html>

@@ -15,6 +15,23 @@ body {
   align-items: center;
 }
 
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.user-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.user-nav :hover{
+  color: rgb(167, 149, 149);
+}
+
 .logout {
   background-color: #fff;
   color: #0d6efd;

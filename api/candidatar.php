@@ -71,21 +71,21 @@ if (!move_uploaded_file($file_tmp, $dest_path)) {
 }
 
 // Verifica se já foi feita candidatura
-$verifica = $pdo->prepare("SELECT * FROM candidaturas WHERE id_candidato = :id_candidato AND id_vaga = :id_vaga");
-$verifica->execute([
+$verifica = $pdo -> prepare("SELECT * FROM candidaturas WHERE id_candidato = :id_candidato AND id_vaga = :id_vaga");
+$verifica -> execute([
     ':id_candidato' => $payload['id'],
     ':id_vaga' => $id_vaga
 ]);
 
-if ($verifica->rowCount() > 0) {
+if ($verifica -> rowCount() > 0) {
     echo json_encode(['erro' => 'Você já se candidatou a esta vaga']);
     exit;
 }
 
 // Insere no banco
 try {
-    $stmt = $pdo->prepare("INSERT INTO candidaturas (id_candidato, id_vaga, curriculo) VALUES (:id_candidato, :id_vaga, :curriculo)");
-    $stmt->execute([
+    $stmt = $pdo -> prepare("INSERT INTO candidaturas (id_candidato, id_vaga, curriculo) VALUES (:id_candidato, :id_vaga, :curriculo)");
+    $stmt -> execute([
         ':id_candidato' => $payload['id'],
         ':id_vaga' => $id_vaga,
         ':curriculo' => '/uploads/' . $new_file_name
@@ -94,5 +94,5 @@ try {
     echo json_encode(['sucesso' => 'Candidatura realizada com sucesso']);
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['erro' => 'Erro ao salvar candidatura: ' . $e->getMessage()]);
+    echo json_encode(['erro' => 'Erro ao salvar candidatura: ' . $e -> getMessage()]);
 }

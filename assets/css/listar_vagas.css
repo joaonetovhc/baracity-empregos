@@ -66,7 +66,7 @@ h2 {
 }
 
 .vaga-card {
-  background-color: #d6d0d0;
+  background-color: #e7e7e7;
   padding: 20px;
   width: 300px;
   border-radius: 10px;
@@ -98,6 +98,12 @@ h2 {
   font-weight: bold;
   cursor: pointer;
   align-self: flex-start;
+  transition: all 0.5s ease;
+}
+
+.vaga-card:hover{
+  transform: scale(1.01);
+  z-index: 1;
 }
 
 .descricao {
@@ -178,7 +184,6 @@ h2 {
   max-width: 100%;
   display: block;
 }
-
 
 .enviar {
   margin-top: 20px;

@@ -41,6 +41,7 @@ try {
             usuarios.nome AS nome_empresa
         FROM vagas
         INNER JOIN usuarios ON usuarios.id = vagas.empresa_id
+        WHERE vagas.status = 'ativa'
         ORDER BY vagas.data_publicacao DESC
     ");
 

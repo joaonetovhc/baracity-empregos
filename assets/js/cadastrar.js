@@ -12,7 +12,7 @@ document.querySelector('form').addEventListener('submit', async function(e) {
   console.log(tipo)
 
   try {
-    const response = await fetch('http://localhost/A3/baracity-empregos/api/cadastrar.php', {
+    const response = await fetch('http://localhost/baracity-empregos/api/cadastrar.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

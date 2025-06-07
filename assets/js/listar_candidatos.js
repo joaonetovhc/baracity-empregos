@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  fetch(`http://localhost/A3/baracity-empregos/api/listar_candidatos.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/listar_candidatos.php?token=${token}`)
     .then(res => res.json())
     .then(candidatos => {
       if (candidatos.erro) {

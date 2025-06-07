@@ -32,19 +32,17 @@ if (!in_array($tipo, ['candidato', 'empresa', 'admin'])) {
 
 // Verifica se email já existe
 try {
-    $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
-    $stmt->execute([':email' => $email]);
+    $stmt = $pdo -> prepare("SELECT id FROM usuarios WHERE email = :email");
+    $stmt -> execute([':email' => $email]);
     if ($stmt->fetch()) {
         http_response_code(409);
         echo json_encode(['erro' => 'Email já cadastrado']);
         exit;
     }
 
-    // Hash da senha
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    // Insere usuário
-    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (:nome, :email, :senha, :tipo)");
+    $stmt = $pdo -> prepare("INSERT INTO usuarios (nome, email, senha, tipo) VALUES (:nome, :email, :senha, :tipo)");
     $stmt -> execute([
         ':nome' => $nome,
         ':email' => $email,

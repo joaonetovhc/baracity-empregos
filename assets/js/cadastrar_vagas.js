@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch(`http://localhost/A3/baracity-empregos/api/cadastrar_vagas.php?token=${token}`, {
+      const response = await fetch(`http://localhost/baracity-empregos/api/cadastrar_vagas.php?token=${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

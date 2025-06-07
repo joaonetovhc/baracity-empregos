@@ -36,7 +36,7 @@ if ($dados['tipo'] !== 'empresa') {
 $empresa_id = $dados['id'];
 
 try {
-    $stmt = $pdo -> prepare("SELECT * FROM vagas WHERE empresa_id = :empresa_id ORDER BY data_publicacao DESC");
+    $stmt = $pdo -> prepare("SELECT * FROM vagas WHERE empresa_id = :empresa_id AND status = 'ativa' ORDER BY data_publicacao DESC");
     $stmt -> execute([':empresa_id' => $empresa_id]);
     $vagas = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 

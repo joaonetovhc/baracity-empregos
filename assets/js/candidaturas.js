@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  fetch(`http://localhost/A3/baracity-empregos/api/listar_candidaturas.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/listar_candidaturas.php?token=${token}`)
     .then(res => res.json())
     .then(candidaturas => {
       if (candidaturas.erro) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p><strong>Local:</strong> ${c.local}</p>
           <p><strong>Salário:</strong> R$ ${c.salario}</p>
           <p><strong>Data da candidatura:</strong> ${new Date(c.data_candidatura).toLocaleDateString()}</p>
-          <button class="btn-remover" data-id="${c.id}" style="margin-top: 8px; padding: 6px 12px; cursor: pointer;">Remover</button>
+          <button class="btn-remover" data-id="${c.id}" style="margin-top: 8px; padding: 6px 12px; cursor: pointer;">Remover candidatura</button>
         `;
         container.appendChild(div);
       });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function removerCandidatura(id) {
-    fetch(`http://localhost/A3/baracity-empregos/api/remover_candidatura.php?token=${token}`, {
+    fetch(`http://localhost/baracity-empregos/api/remover_candidatura.php?token=${token}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({id:id})

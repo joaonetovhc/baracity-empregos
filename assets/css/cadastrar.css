@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  background: #f2f3f4; /* Igual ao login */
+  background: #f2f3f4;
 }
 
 .topbar {
@@ -36,14 +36,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh; /* Igual ao login */
+  height: 90vh; 
 }
 
 .cadastro-card {
   background: white;
   padding: 40px;
-  border-radius: 8px; /* Igual ao login-box */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Igual ao login */
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   text-align: center;
@@ -51,7 +51,7 @@ body {
 
 .cadastro-card h1 {
   margin-bottom: 25px;
-  font-size: 18px; /* Igual ao login h2 */
+  font-size: 18px;
   font-weight: 600;
 }
 

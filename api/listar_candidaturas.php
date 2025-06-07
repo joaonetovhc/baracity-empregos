@@ -36,7 +36,7 @@ try {
         FROM candidaturas c
         JOIN vagas v ON c.id_vaga = v.id
         JOIN usuarios u ON v.empresa_id = u.id
-        WHERE c.id_candidato = :id_candidato
+        WHERE c.id_candidato = :id_candidato AND v.status = 'ativa'
         ORDER BY c.data_envio DESC
     ");
 

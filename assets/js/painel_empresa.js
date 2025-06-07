@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   }
 
-  fetch(`http://localhost/A3/baracity-empregos/api/vagas_empresa.php?token=${token}`)
+  fetch(`http://localhost/baracity-empregos/api/vagas_empresa.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
@@ -63,14 +63,10 @@ function logout() {
   window.location.href = 'login.html';
 }
 
-function editarVaga(id) {
-  window.location.href = `editar_vaga.html?id=${id}`;
-}
-
 function excluirVaga(id) {
   if (confirm('Tem certeza que deseja excluir esta vaga?')) {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost/A3/baracity-empregos/api/excluir_vaga.php?id=${id}&token=${token}`, {
+    fetch(`http://localhost/baracity-empregos/api/inativar_vaga.php?id=${id}&token=${token}`, {
       method: 'DELETE'
     })
     .then(response => response.json())
@@ -87,4 +83,81 @@ function excluirVaga(id) {
       alert('Erro ao excluir vaga.');
     });
   }
+}
+
+
+const modal = document.getElementById('modal-editar');
+const fecharModal = document.getElementById('fechar-modal');
+const formEditar = document.getElementById('form-editar-vaga');
+
+function editarVaga(id) {
+  // Pega a vaga no DOM pelo id
+  const card = [...document.querySelectorAll('.vaga-card')].find(c => 
+    c.querySelector('.btn-editar').getAttribute('onclick').includes(`editarVaga(${id})`)
+  );
+
+  if (!card) return alert('Erro ao encontrar a vaga para editar.');
+
+  // Preenche o modal com os dados da vaga do card
+  document.getElementById('vaga-id').value = id;
+  document.getElementById('vaga-titulo').value = card.querySelector('h3').textContent;
+  document.getElementById('vaga-descricao').value = card.querySelector('p:nth-of-type(1)').textContent.replace('Descrição: ', '');
+  document.getElementById('vaga-requisitos').value = card.querySelector('p:nth-of-type(2)').textContent.replace('Requisitos: ', '');
+  const salarioTexto = card.querySelector('p:nth-of-type(3)').textContent.replace('Salário: R$ ', '').replace('.', '').replace(',', '.');
+  document.getElementById('vaga-salario').value = parseFloat(salarioTexto);
+
+  modal.style.display = 'flex';
+}
+
+fecharModal.onclick = () => {
+  modal.style.display = 'none';
+};
+
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
+formEditar.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const token = localStorage.getItem('token');
+  const formData = new FormData(formEditar);
+  const data = Object.fromEntries(formData.entries());
+
+fetch(`http://localhost/baracity-empregos/api/editar_vaga.php?token=${token}`, {
+    method: 'PUT', // ou POST dependendo da sua API
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(resData => {
+    if(resData.sucesso) {
+      alert('Vaga atualizada com sucesso!');
+      modal.style.display = 'none';
+      // Atualiza o card com os novos dados sem recarregar
+      atualizarCardVaga(data);
+    } else {
+      alert(resData.erro || 'Erro ao atualizar vaga.');
+    }
+  })
+  .catch(err => {
+    alert('Erro na comunicação com a API.');
+    console.error(err);
+  });
+});
+
+function atualizarCardVaga(vagaAtualizada) {
+  const cards = document.querySelectorAll('.vaga-card');
+  cards.forEach(card => {
+    if (card.querySelector('.btn-editar').getAttribute('onclick').includes(`editarVaga(${vagaAtualizada.id})`)) {
+      card.querySelector('h3').textContent = vagaAtualizada.titulo;
+      card.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Descrição:</strong> ${vagaAtualizada.descricao}`;
+      card.querySelector('p:nth-of-type(2)').innerHTML = `<strong>Requisitos:</strong> ${vagaAtualizada.requisitos || 'Não informado'}`;
+      card.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Salário:</strong> R$ ${parseFloat(vagaAtualizada.salario).toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+  });
 }

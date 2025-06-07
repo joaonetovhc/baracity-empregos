@@ -60,7 +60,7 @@ body {
 }
 
 .vaga-card {
-  background-color: #d6d0d0;
+  background-color: #e7e7e7;
   padding: 20px;
   width: 300px;
   border-radius: 10px;
@@ -68,6 +68,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.3s ease;
+}
+.vaga-card:hover {
+    transform: scale(1.01);
+    z-index: 1;
+    transition: linear;
 }
 
 .vaga-card h3 {
@@ -90,4 +96,21 @@ body {
 
 .vaga-card a:hover {
   text-decoration: underline;
+}
+
+.btn-remover{
+  background-color: #dc3545;
+  color: white;
+  margin-top: 20px;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-remover:hover{
+  background-color: #e24b5a;
+  color: #ddd7d7;
 }

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   }
 
-  fetch(`http://localhost/baracity-empregos/api/vagas_empresa.php?token=${token}`)
+  fetch(`http://localhost/A3/baracity-empregos/api/vagas_empresa.php?token=${token}`)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('vagas-container');
@@ -70,7 +70,7 @@ function editarVaga(id) {
 function excluirVaga(id) {
   if (confirm('Tem certeza que deseja excluir esta vaga?')) {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost/baracity-empregos/api/excluir_vaga.php?id=${id}&token=${token}`, {
+    fetch(`http://localhost/A3/baracity-empregos/api/excluir_vaga.php?id=${id}&token=${token}`, {
       method: 'DELETE'
     })
     .then(response => response.json())

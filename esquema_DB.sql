@@ -12,20 +12,21 @@ CREATE TABLE usuarios (
 
 CREATE TABLE vagas (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  id_empresa INT NOT NULL,
+  empresa_id INT NOT NULL,
   titulo VARCHAR(100) NOT NULL,
   descricao TEXT NOT NULL,
   requisitos TEXT,
   data_publicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_empresa) REFERENCES usuarios(id)
+  FOREIGN KEY (empresa_id) REFERENCES usuarios(id)
 );
 
 CREATE TABLE candidaturas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_candidato INT NOT NULL,
   id_vaga INT NOT NULL,
-  curriculo TEXT, -- pode ser caminho do arquivo ou texto
+  curriculo TEXT,
   data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_candidatura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_candidato) REFERENCES usuarios(id),
   FOREIGN KEY (id_vaga) REFERENCES vagas(id)
 );

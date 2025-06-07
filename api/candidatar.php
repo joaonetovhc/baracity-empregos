@@ -42,7 +42,7 @@ if (!isset($_FILES['curriculo']) || $_FILES['curriculo']['error'] !== UPLOAD_ERR
     exit;
 }
 
-$allowed_extensions = ['pdf', 'doc', 'docx'];
+$allowed_extensions = ['pdf', 'doc', 'docx', 'txt'];
 $file_name = $_FILES['curriculo']['name'];
 $file_tmp = $_FILES['curriculo']['tmp_name'];
 $file_size = $_FILES['curriculo']['size'];

@@ -11,27 +11,22 @@ body {
 .topbar {
   background-color: #0d6efd;
   color: white;
-  padding: 15px 40px;
-  font-size: 20px;
-  font-weight: bold;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logout {
-  background-color: #fff;
-  color: #0d6efd;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.topbar h1 {
+  margin: 0;
+  font-size: 22px;
 }
 
-.logout:hover {
-  background-color: #e6e6e6;
+.topbar nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .main-container {
@@ -44,20 +39,6 @@ body {
   background-color: #fff;
   padding: 20px;
   border-right: 1px solid #ccc;
-}
-
-.user-info {
-  margin-bottom: 30px;
-}
-
-.user-info strong {
-  display: block;
-  font-size: 16px;
-}
-
-.user-info span {
-  color: gray;
-  font-size: 14px;
 }
 
 .sidebar ul {
@@ -96,8 +77,9 @@ body {
 }
 
 .vaga-card {
-  background-color: #e9ecef; /* tom mais suave que antes */
+  background-color: #e9ecef;
   padding: 20px;
+  max-width: 500px;
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
